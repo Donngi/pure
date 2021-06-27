@@ -157,7 +157,7 @@ prompt_pure_preprompt_render() {
 
 	# Environment variable of AWS
 	if [[ -n $(export | grep AWS | egrep -o "^[^=]+") ]]; then
-		preprompt_parts+=('%F{magenta}$(export | grep AWS | tr "\n" " ")%f')
+		preprompt_parts+=('%F{prompt_pure_colors[aws:envs]}$(export | grep AWS | tr "\n" " ")%f')
 	fi
 
 	# Execution time.
@@ -811,6 +811,7 @@ prompt_pure_setup() {
 		user                 242
 		user:root            default
 		virtualenv           242
+		aws:envs             magenta
 	)
 	prompt_pure_colors=("${(@kv)prompt_pure_colors_default}")
 
