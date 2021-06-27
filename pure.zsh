@@ -155,6 +155,11 @@ prompt_pure_preprompt_render() {
 		preprompt_parts+=('%F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f')
 	fi
 
+	# Environment variable of AWS
+	if [[ -n $(export | grep AWS | egrep -o "^[^=]+") ]]; then
+		preprompt_parts+=('%F{magenta}$(export | grep AWS | tr "\n" " ")%f')
+	fi
+
 	# Execution time.
 	[[ -n $prompt_pure_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
 
