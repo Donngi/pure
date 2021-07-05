@@ -157,7 +157,7 @@ prompt_pure_preprompt_render() {
 
 	# Environment variable of AWS
 	if [[ -n $(export | grep AWS | egrep -o "^[^=]+") ]]; then
-		preprompt_parts+=('%F{prompt_pure_colors[aws:envs]}$(export | grep AWS | tr "\n" " ")%f')
+		preprompt_parts+=('%F{$prompt_pure_colors[aws:envs]}$(export | grep AWS | tr "\n" " ")%f')
 	fi
 
 	# Execution time.
